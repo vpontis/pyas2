@@ -163,7 +163,7 @@ class Message(models.Model):
         ('ASYNC', _('Asynchronous')),
     )
     # TODO: Create composite key (message_id, organization, partner)
-    message_id = models.CharField(max_length=100, primary_key=True)
+    message_id = models.CharField(max_length=200, primary_key=True)
     headers = models.TextField(null=True)
     direction = models.CharField(max_length=5, choices=DIRECTION_CHOICES)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -186,7 +186,7 @@ class Message(models.Model):
 
 
 class Payload(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
     content_type = models.CharField(max_length=255)
     file = models.CharField(max_length=500)
 
@@ -212,7 +212,7 @@ class MDN(models.Model):
         ('R', _('Received')),
         ('P', _('Pending')),
     )
-    message_id = models.CharField(max_length=100, primary_key=True)
+    message_id = models.CharField(max_length=200, primary_key=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=2, choices=STATUS_CHOICES)
     file = models.CharField(max_length=500)
